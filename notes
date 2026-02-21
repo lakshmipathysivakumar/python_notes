@@ -44,5 +44,38 @@ except ValueError:
 int() excepts a number if string is passed, it throws "ValueError" and its case sensitive.
 
 ********************
+shallow copy and deep copy.
+shallow copy - copies the object and nested object also but only references. change in original object(list) affects the new object(list)
+deep copy - copies the object and nested object also but it recursively copies the nested objects. change in original object(list/nested list) doesn't affect new object(list/nested list)
 
+import copy
+a = [[1,2,3],[4,5,6]]
+b = copy.copy(a)
+c = copy.copy(a)
+print("value of a ", a)
+print("value of b ", b)
+print("value of c ", c)
+print("memory of a ", id(a))
+print("memory of b ", id(b))
+print("memory of c ", id(c))
+b[1][1] = 55
+c[1][2] = 66
+print("value of a post edit ", a)
+print("value of b post edit", b)
+print("value of c post edit", c)
+print("memory of a ", id(a))
+print("memory of b ", id(b))
+print("memory of c ", id(c))
 
+Shallow copy → outer object is different, but inner objects are shared
+Deep copy → both outer and inner objects are different
+- In your example, a = [[1,2,3],[4,5,6]]:
+- a is the outer list (the container).
+- a[0] and a[1] are the inner lists (the elements inside the outer list).
+- a[0][1] or a[1][0] are the primitive integers inside those inner lists
+
+For flat list: shallow copy and deep copy work same. because flast list contains integers which primitive (value cannot change once created)
+so change in one object doesn't affect another object.
+
+FOR IMMUTABLE TYPES(int, str,tuple) BOTH BEHAVE SAME WAY.
+FOR MUTABLE TYPES(dict,list,sets) BOTH BEHAVE DIFFERENTLY.
