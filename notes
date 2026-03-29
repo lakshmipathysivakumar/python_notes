@@ -79,6 +79,15 @@ so change in one object doesn't affect another object.
 
 FOR IMMUTABLE TYPES(int, str,tuple) BOTH BEHAVE SAME WAY.
 FOR MUTABLE TYPES(dict,list,sets) BOTH BEHAVE DIFFERENTLY.
+When there are nested mutable objects, then only shallow copy effect is visible.
+
+| Data Type      | Nested? | Shallow Copy Effect |
+| -------------- | ------- | ------------------- |
+| list of lists  | ✅ yes   | affects original    |
+| dict with list | ✅ yes   | affects original    |
+| set            | ❌ no    | no effect           |
+| list of ints   | ❌ no    | no effect           |
+
 
 *************
 
